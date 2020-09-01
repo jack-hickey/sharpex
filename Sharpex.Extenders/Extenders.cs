@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sharpex.Extenders
 {
-    public class Class1
+    public static class Extenders
     {
+
     }
 }
