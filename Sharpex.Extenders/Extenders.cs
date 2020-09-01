@@ -9,20 +9,34 @@ using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Xml.Serialization;
 
 namespace Sharpex.Extenders
 {
     public static class Extenders
     {
-        public static T ToInstance<T>(this string xml)
+        public static string ToJSON(this object instance)
         {
-            using (StringReader reader = new StringReader(xml))
-            {
-                Type tarType = typeof(T);
+            return new JavaScriptSerializer().Serialize(instance);
+        }
 
-                return (T)new XmlSerializer(tarType).
-                    Deserialize(reader);
+        public static T ToInstance<T>(this string value, SerializationType serializationType)
+        {
+            switch (serializationType)
+            {
+                case SerializationType.Xml:
+                    using (StringReader reader = new StringReader(value))
+                    {
+                        Type tarType = typeof(T);
+
+                        return (T)new XmlSerializer(tarType).
+                            Deserialize(reader);
+                    }
+                case SerializationType.Json:
+                    return (T)new JavaScriptSerializer().Deserialize(value, typeof(T));
+                default:
+                    return default;
             }
         }
 
