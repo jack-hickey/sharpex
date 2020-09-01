@@ -1,0 +1,6 @@
+C:\Users\jackh\source\repos\Sharpex\Sharpex.Extenders\bin\Debug\Sharpex.Extenders.dll
+C:\Users\jackh\source\repos\Sharpex\Sharpex.Extenders\bin\Debug\Sharpex.Extenders.pdb
+C:\Users\jackh\source\repos\Sharpex\Sharpex.Extenders\obj\Debug\Sharpex.Extenders.csprojAssemblyReference.cache
+C:\Users\jackh\source\repos\Sharpex\Sharpex.Extenders\obj\Debug\Sharpex.Extenders.csproj.CoreCompileInputs.cache
+C:\Users\jackh\source\repos\Sharpex\Sharpex.Extenders\obj\Debug\Sharpex.Extenders.dll
+C:\Users\jackh\source\repos\Sharpex\Sharpex.Extenders\obj\Debug\Sharpex.Extenders.pdb
