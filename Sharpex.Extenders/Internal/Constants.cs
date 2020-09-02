@@ -13,6 +13,8 @@ namespace Sharpex.Extenders.Internal
             public const string WhiteSpace = @"\s+";
 
             public const string NonNumerics = "[^0-9]";
+
+            public const string Numerics = "[0-9]";
         }
 
         public const string HashByteFormat = "x2";

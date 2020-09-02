@@ -208,5 +208,25 @@ namespace Sharpex.Extenders
         {
             return Regex.Match(input, Constants.RegexFormats.NonNumerics).Success;
         }
+
+        /// <summary>
+        /// Replace any numeric characters in a string
+        /// </summary>
+        /// <param name="input">The input string to strip</param>
+        /// <returns>A new string identical to that of the input, excluding numerics</returns>
+        public static string RemoveNumerics(this string input)
+        {
+            return Regex.Replace(input, Constants.RegexFormats.Numerics, "");
+        }
+
+        /// <summary>
+        /// Determines if a string contains any numerics
+        /// </summary>
+        /// <param name="input">The input string to scan</param>
+        /// <returns>True if the input contains any numeric characters, otherwise false</returns>
+        public static bool HasNumerics(this string input)
+        {
+            return Regex.Match(input, Constants.RegexFormats.Numerics).Success;
+        }
     }
 }
