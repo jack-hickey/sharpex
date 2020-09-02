@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
@@ -18,6 +19,24 @@ namespace Sharpex.Extenders
 {
     public static class Extenders
     {
+        /// <summary>
+        /// Check that a string is in valid email format
+        /// </summary>
+        /// <param name="address">The email address to validate</param>
+        /// <returns>True if the input was a valid email address, otherwise false</returns>
+        public static bool IsValidEmail(this string address)
+        {
+            try
+            {
+                System.Net.Mail.MailAddress addressAttempt = new System.Net.Mail.MailAddress(address);
+                return addressAttempt.Address == address;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         /// <summary>
         /// Get the description of an enum instance
         /// </summary>
