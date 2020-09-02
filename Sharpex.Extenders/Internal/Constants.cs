@@ -15,6 +15,8 @@ namespace Sharpex.Extenders.Internal
             public const string NonNumerics = "[^0-9]";
 
             public const string Numerics = "[0-9]";
+
+            public const string NonAlphaNumerics = "[^a-zA-Z0-9 -]";
         }
 
         public const string HashByteFormat = "x2";
