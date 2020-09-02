@@ -20,6 +20,17 @@ namespace Sharpex.Extenders
     public static class Extenders
     {
         /// <summary>
+        /// Check if a string is in valid URL format
+        /// </summary>
+        /// <param name="url">The URL to validate</param>
+        /// <returns>True if the input was a valid URL, otherwise false</returns>
+        public static bool IsValidURL(this string url)
+        {
+            return Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult)
+                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+        }
+
+        /// <summary>
         /// Check that a string is in valid email format
         /// </summary>
         /// <param name="address">The email address to validate</param>
