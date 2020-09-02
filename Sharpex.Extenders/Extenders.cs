@@ -248,5 +248,25 @@ namespace Sharpex.Extenders
         {
             return Regex.Match(input, Constants.RegexFormats.NonAlphaNumerics).Success;
         }
+
+        /// <summary>
+        /// Replace any alpha numerics in a string
+        /// </summary>
+        /// <param name="input">The input string to strip</param>
+        /// <returns>A new string identical to that of the input, excluding alpha numerics</returns>
+        public static string RemoveAlphaNumerics(this string input)
+        {
+            return Regex.Replace(input, Constants.RegexFormats.AlphaNumerics, "");
+        }
+
+        /// <summary>
+        /// Determines if a string contains any alpha numerics
+        /// </summary>
+        /// <param name="input">The input string to scan</param>
+        /// <returns>True if the input contains any alpha numerics, otherwise false</returns>
+        public static bool HasAlphaNumerics(this string input)
+        {
+            return Regex.Match(input, Constants.RegexFormats.AlphaNumerics).Success;
+        }
     }
 }
