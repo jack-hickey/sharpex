@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sharpex.Extenders.Internal;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Xml.Serialization;
@@ -19,6 +21,16 @@ namespace Sharpex.Extenders
 {
     public static class Extenders
     {
+        /// <summary>
+        /// Removes all white space from a string
+        /// </summary>
+        /// <param name="input">The input string to strip</param>
+        /// <returns>A new string identical to that of the input, but without any white space</returns>
+        public static string RemoveWhiteSpace(this string input)
+        {
+            return Regex.Replace(input, Constants.WhiteSpaceRegex, "");
+        }
+
         /// <summary>
         /// Check if a string is in valid URL format
         /// </summary>
@@ -160,7 +172,7 @@ namespace Sharpex.Extenders
                     );
 
                 return string.Join("",
-                        data.Select(x => x.ToString("x2"))
+                        data.Select(x => x.ToString(Constants.HashByteFormat))
                     );
             }
         }
