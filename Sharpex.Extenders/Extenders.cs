@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
@@ -16,7 +18,26 @@ namespace Sharpex.Extenders
 {
     public static class Extenders
     {
-        public static string ToJSON(this object instance)
+        public static string GetDescription<T>(this T enumValue) where T : struct, IConvertible
+        {
+            if (!typeof(T).IsEnum)
+                return "";
+
+            string description = enumValue.ToString();
+
+            if (enumValue.GetType().GetField(enumValue.ToString()) is FieldInfo fieldInfo)
+            {
+                if (fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), true) is object[] attrs
+                    && attrs.Length > 0)
+                {
+                    description = ((DescriptionAttribute)attrs[0]).Description;
+                }
+            }
+
+            return description;
+        }
+
+    public static string ToJSON(this object instance)
         {
             return new JavaScriptSerializer().Serialize(instance);
         }
