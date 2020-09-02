@@ -18,6 +18,12 @@ namespace Sharpex.Extenders
 {
     public static class Extenders
     {
+        /// <summary>
+        /// Get the description of an enum instance
+        /// </summary>
+        /// <typeparam name="T">The type of enum being dealt with</typeparam>
+        /// <param name="enumValue">The instance to grab the description from</param>
+        /// <returns>A string representing the description of the enum</returns>
         public static string GetDescription<T>(this T enumValue) where T : struct, IConvertible
         {
             if (!typeof(T).IsEnum)
@@ -37,11 +43,23 @@ namespace Sharpex.Extenders
             return description;
         }
 
-    public static string ToJSON(this object instance)
+        /// <summary>
+        /// Serialize an object into JSON format
+        /// </summary>
+        /// <param name="instance">The object to serialize</param>
+        /// <returns>A string representing the JSON data</returns>
+        public static string ToJSON(this object instance)
         {
             return new JavaScriptSerializer().Serialize(instance);
         }
 
+        /// <summary>
+        /// Deserializes from either XML or JSON into a constructed object
+        /// </summary>
+        /// <typeparam name="T">The type of object to deserialize the data into</typeparam>
+        /// <param name="value">The JSON or XML data to deserialize</param>
+        /// <param name="serializationType">Specified whether the input data is XML or JSON</param>
+        /// <returns>A fully constructed object based on the input data and deserialization type</returns>
         public static T ToInstance<T>(this string value, SerializationType serializationType)
         {
             switch (serializationType)
@@ -61,6 +79,11 @@ namespace Sharpex.Extenders
             }
         }
 
+        /// <summary>
+        /// Serialize an object into XML format
+        /// </summary>
+        /// <param name="instance">The object to serialize</param>
+        /// <returns>A string representing the XML data</returns>
         public static string ToXML(this object instance)
         {
             using (StringWriter writer = new StringWriter())
@@ -72,6 +95,11 @@ namespace Sharpex.Extenders
             }
         }
 
+        /// <summary>
+        /// Converts a SecureString value to a normal string
+        /// </summary>
+        /// <param name="value">The SecureString instance to convert</param>
+        /// <returns>A string representing the raw data stored in the SecureString</returns>
         public static string ToRealString(this SecureString value)
         {
             IntPtr valuePtr = IntPtr.Zero;
@@ -88,6 +116,11 @@ namespace Sharpex.Extenders
             }
         }
 
+        /// <summary>
+        /// Hash a string value using the SHA256 algorithm
+        /// </summary>
+        /// <param name="input">The input string to hash</param>
+        /// <returns>A string representing the hashed value of the input data</returns>
         public static string GetHash(this string input)
         {
             using (SHA256 engine = SHA256.Create())
@@ -102,6 +135,13 @@ namespace Sharpex.Extenders
             }
         }
 
+        /// <summary>
+        /// Directly cast a string into an enum value
+        /// </summary>
+        /// <typeparam name="T">The type of enum to convert into</typeparam>
+        /// <param name="text">The string to convert from</param>
+        /// <param name="ignoreCase">Determines whether or not to ignore case sensitivity</param>
+        /// <returns>An instance of the enum, determined by the type parameter</returns>
         public static T ToEnum<T>(this string text, bool ignoreCase = true) where T : struct
         {
             return Enum.TryParse(text, ignoreCase, out T parsed) ? parsed : default;
