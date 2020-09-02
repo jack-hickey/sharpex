@@ -8,7 +8,12 @@ namespace Sharpex.Extenders.Internal
 {
     internal class Constants
     {
-        public const string WhiteSpaceRegex = @"\s+";
+        public struct RegexFormats
+        {
+            public const string WhiteSpace = @"\s+";
+
+            public const string NonNumerics = "[^0-9]";
+        }
 
         public const string HashByteFormat = "x2";
     }

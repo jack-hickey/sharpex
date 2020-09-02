@@ -22,16 +22,6 @@ namespace Sharpex.Extenders
     public static class Extenders
     {
         /// <summary>
-        /// Removes all white space from a string
-        /// </summary>
-        /// <param name="input">The input string to strip</param>
-        /// <returns>A new string identical to that of the input, but without any white space</returns>
-        public static string RemoveWhiteSpace(this string input)
-        {
-            return Regex.Replace(input, Constants.WhiteSpaceRegex, "");
-        }
-
-        /// <summary>
         /// Check if a string is in valid URL format
         /// </summary>
         /// <param name="url">The URL to validate</param>
@@ -187,6 +177,36 @@ namespace Sharpex.Extenders
         public static T ToEnum<T>(this string text, bool ignoreCase = true) where T : struct
         {
             return Enum.TryParse(text, ignoreCase, out T parsed) ? parsed : default;
+        }
+
+        /// <summary>
+        /// Removes all white space from a string
+        /// </summary>
+        /// <param name="input">The input string to strip</param>
+        /// <returns>A new string identical to that of the input, excluding white space</returns>
+        public static string RemoveWhiteSpace(this string input)
+        {
+            return Regex.Replace(input, Constants.RegexFormats.WhiteSpace, "");
+        }
+
+        /// <summary>
+        /// Replace any non numeric characters in a string
+        /// </summary>
+        /// <param name="input">The input string to strip</param>
+        /// <returns>A new string identical to that of the input, excluding non numeric characters</returns>
+        public static string RemoveNonNumerics(this string input)
+        {
+            return Regex.Replace(input, Constants.RegexFormats.NonNumerics, "");
+        }
+
+        /// <summary>
+        /// Determines if a string contains non numeric characters
+        /// </summary>
+        /// <param name="input">The input string to scan</param>
+        /// <returns>True if the input contains any non numeric characters, otherwise false</returns>
+        public static bool HasNonNumerics(this string input)
+        {
+            return Regex.Match(input, Constants.RegexFormats.NonNumerics).Success;
         }
     }
 }
