@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>1.0.0</version>
+    <title>Sharpex</title>
+    <authors>Jack Hickey</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/jack-hickey/sharpex/</projectUrl>
+    <description>A CSharp extension library to make coding more efficient and easily read</description>
+    <releaseNotes>Initial release of Sharpex</releaseNotes>
+    <copyright>Copyright 2020</copyright>
+    <tags>Tag1 Tag2</tags>
+  </metadata>
+</package>
