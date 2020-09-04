@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Sharpex.Extenders")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Sharpex")]
+[assembly: AssemblyDescription("A CSharp extension library to make coding more efficient and easily read")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Sharpex.Extenders")]
+[assembly: AssemblyCompany("jack-hickey")]
+[assembly: AssemblyProduct("Sharpex")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
